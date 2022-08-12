@@ -37,6 +37,8 @@ function layoutDiv() {
     // 发布日期
     el += '<div id="post-meta">';
     el += __("meta.created") + '&nbsp;<time datetime="' + date_xml(page.date) + '">' + date(page.date, config.date_format) + '</time>';
+    // 文章是否outdate
+    el += '<span id="outdate"></span>';
     el += '</div>';
     el += '</div>';
   } else if (page.layout === "wiki" && page.wiki && page.wiki.length > 0) {
