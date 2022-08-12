@@ -302,7 +302,7 @@ plugins:
   # https://github.com/sivan/heti
   heti:
     enable: false
-    css: https://unpkg.com/heti/umd/heti.min.css
+    css: https://unpkg.zhimg.com/heti/umd/heti.min.css
     js: https://unpkg.com/heti/umd/heti-addon.min.js
 
   # MathJax

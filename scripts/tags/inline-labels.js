@@ -24,7 +24,7 @@ hexo.extend.tag.register('kbd', function(args) {
   return `<kbd>${args.join(' ')}</kbd>`;
 });
 hexo.extend.tag.register('psw', function(args) {
-  return `<psw>${args.join(' ')}</psw>`;
+  return `<psw title="你知道的太多了">${args.join(' ')}</psw>`;
 });
 hexo.extend.tag.register('sup', function(args) {
   args = hexo.args.map(args, ['color'], ['text']);

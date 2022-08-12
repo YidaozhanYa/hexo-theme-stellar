@@ -36,38 +36,52 @@ hexo.extend.helper.register('popular_posts_wrapper', function(args){
       p = p.data[0];
     }
     if (p) {
-      if (p.cover) {
-        if (p.cover.includes('/')) {
-          list.img = p.cover;
-        } else {
-          list.img = 'https://source.unsplash.com/1280x640/?' + p.cover;
-        }
-      } else if (cfg.auto_cover && p.tags && p.tags.length > 0) {
-        var params = '';
-        p.tags.reverse().forEach((tag, i) => {
-          if (i > 0) {
-            params += ',';
-          }
-          params += tag.name;
-        });
-        list.img = 'https://source.unsplash.com/1280x640/?' + params;
-      }
+    //  if (p.cover) {
+        //if (p.cover.includes('/')) {
+//          list.img = p.cover;
+        //} else {
+          //list.img = 'https://source.unsplash.com/1280x640/?' + p.cover;
+//        }
+      //} else if (cfg.auto_cover && p.tags && p.tags.length > 0) {
+        //var params = '';
+        //p.tags.reverse().forEach((tag, i) => {
+          //if (i > 0) {
+//            params += ',';
+          //}
+//          params += tag.name;
+        //});
+        //list.img = 'https://source.unsplash.com/1280x640/?' + params;
+//      }
     }
-    if (hexo.theme.config.default.cover) {
-      el += '<div class="img">'
-      if (list.img && list.img != "") {
-        el += '<img src="' + list.img + '" />';
-      } else {
-        el += '<img src="' + hexo.theme.config.default.cover + '" />';
-      }
-      el += '</div>';
-    }
+    //if (hexo.theme.config.default.cover) {
+      //el += '<div class="img">'
+      //if (list.img && list.img != "") {
+//        el += '<img src="' + list.img + '" />';
+      //} else {
+//        el += '<img src="' + hexo.theme.config.default.cover + '" />';
+      //}
+      //el += '</div>';
+    //}
 
     el += '<span class="title">' + list.title + '</span>';
-
-    if (list.excerpt && list.excerpt.length > 0) {
-      el += '<span class="excerpt">' + util.truncate(util.stripHTML(list.excerpt), {length: 120}) + '</span>';
+    el += '<span class="excerpt">';
+    var exl = "";
+    if (list.excerpt) {
+      exl = util.stripHTML(list.excerpt);
+    } else if (list.description) {
+      exl = list.description;
+    } else {
+      exl = util.truncate(util.stripHTML(p.content), {length: 120});
     }
+    if (exl.charCodeAt(0) == 10) {
+      el += "此文暂无简介\n<br><br><br>";
+    } else {
+      el += exl;
+    }
+    el += '</span>';
+    //if (list.excerpt && list.excerpt.length > 0) {
+//      el += '<span class="excerpt">' + util.truncate(util.stripHTML(list.excerpt), {length: 120}) + '</span>';
+    //}
 
     el +=  '</a>';
     return el;
