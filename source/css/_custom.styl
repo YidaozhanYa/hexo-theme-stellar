@@ -29,14 +29,14 @@ $dark-card = lighten(saturate($dark-site-bg, 50%), 10)
 // 移动端深色背景（OLED调成纯黑可以省电）
 $dark-site-bg-mobile = black
 
+// 陈叔叔CDN
+@import('//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css')
 
-// @font-face
-//   font-family: 'Dosis'
-//   src: url('https://fastly.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf')
-//   font-weight: normal
-//   font-style: normal
+@font-face
+  font-family: 'Segoe UI Emoji'
+  src: url('/fonts/SegoeUIEmojiFluent.ttf'), local('Segoe UI Emoji')
 
-$ff-body = system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif
+$ff-body = "HarmonyOS_Regular", "Segoe UI Emoji", "Noto Color Emoji", sans-serif
 $ff-code = Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif
 
 $ff-logo = $ff-body
