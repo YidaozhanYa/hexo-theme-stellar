@@ -42,6 +42,17 @@ function og_args() {
   }
   return args;
 }
+function og_cover() {
+    if (post.cover != undefined) {
+      if (post.cover.includes('/')) {
+        return '<meta property="og:image" content="' + post.cover + '">';
+      } else {
+        return '';
+      }
+    } else {
+      return '';
+    }
+}
 %>
 <head>
   <%- meta_generator() %>
@@ -63,6 +74,9 @@ function og_args() {
 
   <% if (theme.open_graph && theme.open_graph.enable) { %>
     <%- open_graph(og_args()) %>
+  <% } %>
+  <% if (page.latyout == 'post' && page.cover) { %>
+    <%- og_cover() %>
   <% } %>
   <%- generate_description() %>
 
