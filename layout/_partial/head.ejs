@@ -43,9 +43,9 @@ function og_args() {
   return args;
 }
 function og_cover() {
-    if (post.cover != undefined) {
-      if (post.cover.includes('/')) {
-        return '<meta property="og:image" content="' + post.cover + '">';
+    if (page.cover != undefined) {
+      if (page.cover.includes('/')) {
+        return '<meta property="og:image" content="' + page.cover + '">';
       } else {
         return '';
       }
@@ -75,7 +75,7 @@ function og_cover() {
   <% if (theme.open_graph && theme.open_graph.enable) { %>
     <%- open_graph(og_args()) %>
   <% } %>
-  <% if (page.latyout == 'post' && page.cover) { %>
+  <% if (page.layout == 'post' && page.cover) { %>
     <%- og_cover() %>
   <% } %>
   <%- generate_description() %>
