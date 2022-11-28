@@ -25,8 +25,6 @@ article.md.content
     >p:not([class])
       text-indent: 'calc(%s * 2)' % $fs-p
       text-align: justify
-      a
-        text-indent: 0
     h1,h2,h3,h4,h5,h6
       text-align: center
     >h2:not([class])
@@ -34,7 +32,7 @@ article.md.content
       border-bottom-style: dashed
       border-bottom-color: $color-highlight
   >:first-child
-    margin-top: 0
+    margin-top: 1rem
   h1:not(:first-child)
     margin-top: 2em
   h2:first-child
@@ -130,21 +128,18 @@ article.md blockquote
 article.md img
   border-radius: $border-image
   margin: auto
-  vertical-align: middle
+  display: block
 
-article.md
+article.md 
   p:not([class]), li:not([class])
     a:not([class])
       position: relative
-      padding: 2px
       text-decoration: none
-      display: inline-block
-      line-height: 1.2
       &:after
         content: ''
         position: absolute
         border-radius: 2px
-        bottom: 1px
+        bottom: 0
         left: 2px
         right: 2px
         height: 1px

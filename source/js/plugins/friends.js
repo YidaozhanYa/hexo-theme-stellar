@@ -48,7 +48,6 @@ const friendsjs = {
     friendsjs.requestAPI(cfg.api, function(data) {
       $(el).find('.loading-wrap').remove();
       const arr = data.content || data;
-      console.log(data);
       arr.forEach((item, i) => {
         var user = '<div class="user-card">';
         user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
@@ -67,7 +66,7 @@ const friendsjs = {
 }
 
 $(function () {
-  const els = document.getElementsByClassName('friendsjs-wrap');
+  const els = document.getElementsByClassName('stellar-friends-api');
   for (var i = 0; i < els.length; i++) {
     const el = els[i];
     const api = el.getAttribute('api');
@@ -78,7 +77,7 @@ $(function () {
     cfg.el = el;
     cfg.api = api;
     cfg.class = el.getAttribute('class');
-    cfg.avatar = '/cdn/images/avatar.svg';
+    cfg.avatar = 'https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg';
     friendsjs.layout(cfg);
   }
 });
