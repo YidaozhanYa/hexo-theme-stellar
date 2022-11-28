@@ -54,19 +54,29 @@ const StellarTimeline = {
   },
   layoutDiv: (cfg) => {
     const el = $(cfg.el)[0];
-    $(el).append('<div class="loading-wrap"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg><p></p></div>');
+    $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
     StellarTimeline.requestAPI(cfg.api, function(data) {
       $(el).find('.loading-wrap').remove();
-      const user = el.getAttribute('user');
       const arr = data.content || data;
+      var users = [];
+      const filter = el.getAttribute('user');
+      if (filter && filter.length > 0) {
+        users = filter.split(",");
+      }
       arr.forEach((item, i) => {
-        if (item.user && item.user.login && user && user.length > 0) {
-          if (!user.includes(item.user.login)) {
+        if (item.user && item.user.login && users.length > 0) {
+          if (!users.includes(item.user.login)) {
             return;
           }
         }
         var cell = '<div class="timenode" index="' + i + '">';
         cell += '<div class="header">';
+        if (!users.length && item.user) {
+          cell += '<a class="user-info" href="' + item.user.html_url + '" target="_blank" rel="external nofollow noopener noreferrer">';
+          cell += '<img src="' + item.user.avatar_url + '">';
+          cell += '<span>' + item.user.login + '</span>';
+          cell += '</a>';
+        }
         let date = new Date(item.created_at);
         cell += '<p>' + date.toString().replace(/\sGMT([^.]*)/i, "") + '</p>';
         cell += '</div>';
@@ -105,7 +115,7 @@ const StellarTimeline = {
         }
         if (item.comments != null) {
           cell += '<a class="item comments last" href="' + item.html_url + '#issuecomment-new" target="_blank" rel="external nofollow noopener noreferrer">';
-          cell += '<span>💬 ' + (item.comments || 0) + '</span>';
+          cell += '<span><svg t="1666270368054" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2528" width="200" height="200"><path d="M952 64H72C32.3 64 0 96.3 0 136v508c0 39.7 32.3 72 72 72h261l128 128c14 14 32.5 21.1 50.9 21.1s36.9-7 50.9-21.1l128-128h261c39.7 0 72-32.3 72-72V136c0.2-39.7-32.1-72-71.8-72zM222 462c-39.8 0-72-32.2-72-72s32.2-72 72-72 72 32.2 72 72-32.2 72-72 72z m290-7.7c-39.8 0-72-32.2-72-72s32.2-72 72-72 72 32.2 72 72c0 39.7-32.2 72-72 72z m290 8c-39.8 0-72-32.2-72-72s32.2-72 72-72 72 32.2 72 72c0 39.7-32.2 72-72 72z" p-id="2529"></path></svg> ' + (item.comments || 0) + '</span>';
           cell += '</a>';
         }
         
@@ -117,7 +127,8 @@ const StellarTimeline = {
       });
     }, function() {
       $(el).find('.loading-wrap svg').remove();
-      $(el).find('.loading-wrap p').text('加载失败，请稍后重试。');
+      $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+      $(el).find('.loading-wrap').addClass('error');
     });
   },
 }

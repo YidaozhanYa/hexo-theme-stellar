@@ -1,6 +1,6 @@
 ######## Stellar info ########
 stellar:
-  version: '1.10.0'
+  version: '1.12.0'
   homepage: 'https://xaoxuu.com/wiki/stellar/'
   repo: 'https://github.com/xaoxuu/hexo-theme-stellar'
   cdn_css: # Use cdn links instead of /css/main.css
@@ -250,6 +250,7 @@ plugins:
     friends: /js/plugins/friends.js
     ghinfo: /js/plugins/ghinfo.js
     timeline: /js/plugins/timeline.js
+    linkcard: /js/plugins/linkcard.js
   
 
   marked: https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js
@@ -325,6 +326,7 @@ style:
   darkmode: auto # auto / always / false
   smooth_scroll: true # true / false
   font-size: 16px
+  text-align: left
   color:
     common:
       theme: '#1BCDFC' # 主题色
