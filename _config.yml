@@ -1,6 +1,6 @@
 ######## Stellar info ########
 stellar:
-  version: '1.12.0'
+  version: '1.13.0'
   homepage: 'https://xaoxuu.com/wiki/stellar/'
   repo: 'https://github.com/xaoxuu/hexo-theme-stellar'
   cdn_css: # Use cdn links instead of /css/main.css
@@ -251,6 +251,7 @@ plugins:
     ghinfo: /js/plugins/ghinfo.js
     timeline: /js/plugins/timeline.js
     linkcard: /js/plugins/linkcard.js
+    fcircle: /js/plugins/fcircle.js
   
 
   marked: https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js
