@@ -12,7 +12,7 @@
   scrollbar-width: none
   grid-gap: 1rem 1rem
   grid-auto-flow: column dense
-  overflow: auto
+  overflow: scroll
   scrollbar(0, 0)
 
 
@@ -34,11 +34,14 @@
 .page-footer .text
   p
     margin: 4px 0
-    line-height: 1.2
-  a
+    line-height: 1.5
+  a:not([class])
     text-decoration: underline
     font-weight: 500
     margin: inherit
     padding: inherit
+    &:after
+      display: none
     &:hover
       background: inherit
+      color: $color-hover
