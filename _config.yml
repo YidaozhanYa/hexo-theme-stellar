@@ -1,6 +1,6 @@
 ######## Stellar info ########
 stellar:
-  version: '1.15.1'
+  version: '1.16.2'
   homepage: 'https://xaoxuu.com/wiki/stellar/'
   repo: 'https://github.com/YidaozhanYa/hexo-theme-stellar'
   cdn_css: # Use cdn links instead of /css/main.css
@@ -25,10 +25,10 @@ sidebar:
     # about: '[关于](/about/)'
   # Sidebar widgets
   widgets:
-    index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
-    page: [welcome, toc] # for pages using 'layout:page'
-    post: [toc, repo_info] # for pages using 'layout:post'
-    wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
+    index: welcome, recent # for home/wiki/categories/tags/archives/404 pages
+    page: welcome, toc # for pages using 'layout:page'
+    post: toc, ghrepo # for pages using 'layout:post'
+    wiki: toc, ghrepo, related # for pages using 'layout:wiki'
 
 
 ######## Main ########
@@ -212,7 +212,7 @@ footer:
 tag_plugins:
   # {% note text %}
   note:
-    default_color: '' # light, dark, red, orange, yellow, green, cyan, blue, purple
+    default_color: '' # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
   # {% checkbox %}
   checkbox:
     interactive: false # enable interactive for user
@@ -236,7 +236,9 @@ tag_plugins:
   # {% timeline %}
   timeline:
     max-height: 80vh
-
+  # {% mark %}
+  mark:
+    default_color: dark # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
 
 ######## JS Plugins ########
 plugins:
@@ -336,8 +338,8 @@ style:
       button: '#1BCDFC' # 按钮颜色
       hover: '#ff5722' # 按钮高亮颜色
     light:
-      background: '#f8f8f8' # 浅色背景颜色
-      block: '#f2f2f2' # 块背景颜色
+      background: '#F8F9FA' # 浅色背景颜色
+      block: '#EEF0F2' # 块背景颜色
       card: white # 卡片背景颜色
       title: '#000' # 标题文本颜色
       text: '#333' # 正文文本颜色
