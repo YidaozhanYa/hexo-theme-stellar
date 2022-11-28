@@ -1,15 +1,13 @@
 // list
 .post-list
   margin: 1rem
-  .post-title
-    margin-top: 1.5rem
   .post-title:first-child
     margin-top: .5rem
 
 .post-list
   .post-title
     font-weight: 500
-    margin: .75rem 0
+    margin: 1.25rem 0 .75rem 0
     line-height: 1.2
     font-size: $fs-h3
     border-bottom: none
@@ -29,6 +27,7 @@
   box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.02)
   trans1 box-shadow
   overflow: hidden
+  z-index: 0
   background: var(--card)
   position: relative
   .excerpt
@@ -53,8 +52,12 @@
       img
         object-fit: contain
         height: 1.5em
+
 .post-list .post-card:hover
   box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 16px 0px rgba(0, 0, 0, 0.1)
+  img 
+    transform: scale(1.02)
+    filter: brightness(80%)
 
 
 // common article
@@ -86,11 +89,9 @@
     @media screen and (max-width: 900px)
       height: 240px
     @media screen and (max-width: $device-tablet)
-      height: 280px
-    @media screen and (max-width: $device-mobile)
-      height: 240px
-    @media screen and (max-width: $device-mobile-425)
       height: 220px
+    @media screen and (max-width: $device-mobile-425)
+      height: 200px
     @media screen and (max-width: $device-mobile-375)
       height: 180px
 
@@ -108,8 +109,10 @@
       color: var(--text-p0)
       &[position=top]
         top: 0
+        background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0))
       &[position=bottom]
         bottom: 0
+        background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2))
       div+div
         margin-top: 4px
       .cap

@@ -1,8 +1,8 @@
 ######## Stellar info ########
 stellar:
-  version: '1.13.0'
+  version: '1.14.0'
   homepage: 'https://xaoxuu.com/wiki/stellar/'
-  repo: 'https://github.com/xaoxuu/hexo-theme-stellar'
+  repo: 'https://github.com/YidaozhanYa/hexo-theme-stellar'
   cdn_css: # Use cdn links instead of /css/main.css
   cdn_js: # Use cdn links instead of /js/main.js
 
@@ -341,7 +341,7 @@ style:
       card: white # 卡片背景颜色
       title: '#000' # 标题文本颜色
       text: '#333' # 正文文本颜色
-      code: '#111' # 行内代码颜色
+      code: '#f33a00' # 行内代码颜色
     dark:
       background: '#313438' # 深色背景颜色
       background-mobile: black # 移动端深色背景（OLED调成纯黑可以省电）
