@@ -36,11 +36,13 @@ function layoutNodeContent(content) {
 
 
 function postTimeline(args, content) {
-  args = hexo.args.map(args, ['api']);
+  args = hexo.args.map(args, ['api', 'user']);
   var el = '';
 
   if (args.api && args.api.length > 0) {
-    el += '<div class="tag-plugin timeline stellar-timeline-api" api="' + args.api + '">';
+    el += '<div class="tag-plugin timeline stellar-timeline-api"';
+    el += ' ' + hexo.args.joinTags(args, ['api', 'user']).join(' ');
+    el += '>';
   } else {
     el += '<div class="tag-plugin timeline">';
   }
