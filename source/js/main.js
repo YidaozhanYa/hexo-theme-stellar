@@ -305,11 +305,14 @@ if (stellar.plugins.fancybox) {
 if (stellar.search.service) {
   if (stellar.search.service == 'local_search') {
     stellar.jQuery(() => {
+      stellar.loadScript(stellar.search.js, {
+        defer: true,
+      });
       stellar.loadScript('/js/search/local-search.js', { defer: true }).then(function () {
         var $inputArea = $("input#search-input");
         var $resultArea = document.querySelector("div#search-result");
         $inputArea.focus(function() {
-          var path = stellar.search[stellar.search.service]?.path || '/search.xml';
+          var path = stellar.search.path || '/search.protobuf';
           if (!path.startsWith('/')) {
             path = '/' + path;
           }

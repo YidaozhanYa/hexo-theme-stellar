@@ -57,9 +57,10 @@ article:
     max_count: 5
 
 search:
-  service: local_search # hexo, todo...
-  local_search: # npm i hexo-generator-search
-
+  service: local_search
+  js: https://cdn.jsdelivr.net/npm/protobufjs@7.X.X/dist/protobuf.min.js
+  local_search:
+    path: /search.protobuf
 
 ######## Comments ########
 comments:
