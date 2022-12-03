@@ -32,7 +32,7 @@ hexo.extend.tag.register('sites', function(args) {
       if (item.url && item.title) {
         var cell = '<div class="site-card">';
         cell += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="' + item.url + '">';
-        cell += '<img src="' + (item.screenshot || ('https://screenshot-api.xaoxuu.com/api?url=' + item.url + '&width=1280&height=720')) + '" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;' + hexo.theme.config.default.cover + '&quot;;"/>';
+        cell += '<img src="' + (item.screenshot || ('https://screenshot.yidaozhan.top/api?url=' + item.url + '&width=1280&height=720')) + '" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;' + hexo.theme.config.default.cover + '&quot;;"/>';
         cell += '<div class="info">';
         cell += '<img src="' + (item.avatar || hexo.theme.config.default.link) + '" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;' + hexo.theme.config.default.link + '&quot;;"/>';
         cell += '<span class="title">' + item.title + '</span>';
