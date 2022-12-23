@@ -1,43 +1,9 @@
-# Stellar - 每个人的独立博客
+# Stellar Fork - 每个人的独立博客
 
-Stellar 是一个内置文档系统的简约商务风 Hexo 主题，支持丰富的标签和动态数据组件，请配合 [文档](https://xaoxuu.com/wiki/stellar/) 使用。
+本主题是 xaoxuu/hexo-theme-stellar 的 fork，用于一刀斩的博客。
 
-[![Star History Chart](https://api.star-history.com/svg?repos=xaoxuu/hexo-theme-stellar&type=Date)](https://star-history.com/#xaoxuu/hexo-theme-stellar&Date)
+- 去 jsDelivr 化。
 
+- 样式做了修改，遵循 Fluent Design 设计风格。
 
-## Getting Started
-
-Check your environment:
-
-```yaml
-Hexo: 5.4.0 ~ 6.3.0
-hexo-cli: 4.3.0 ~ latest
-node.js: 14.17.3 ～ 18.12.0
-npm: 6.14.13 ~ 8.19.2
-```
-
-Edit your `_config.yml`:
-
-```yaml
-theme: stellar
-```
-
-Install Stellar in terminal:
-
-```bash
-npm i hexo-theme-stellar
-```
-
-## Usage
-
-See docs: https://xaoxuu.com/wiki/stellar/
-
-## Examples
-
-https://xaoxuu.com/wiki/stellar/examples/
-
-## Feedback
-
-Issues: https://github.com/xaoxuu/hexo-theme-stellar/issues/
-
-Discussions: https://github.com/xaoxuu/hexo-theme-stellar/discussions/
+- 将自带搜索改为 protobuf。
