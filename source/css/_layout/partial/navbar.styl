@@ -7,15 +7,15 @@
   padding: 0 1rem
   z-index: 8
   margin-bottom: 1px
-  &:after
-    content: ''
-    width: 'calc(100% - 2 * %s)' % 1rem
-    height: 2px
-    border-radius: 2px
-    position: absolute
-    bottom: 0
-    left: 1rem
-    background: var(--block-hover)
+  //&:after
+    //content: ''
+    //width: 'calc(100% - 2 * %s)' % 1rem
+    //height: 2px
+    //border-radius: 2px
+    //position: absolute
+    //bottom: 0
+    //left: 1rem
+    //background: var(--block-hover)
 
 nav.cap
   display: flex
@@ -36,10 +36,10 @@ nav.cap
     &:after
       height: 2px
       position: absolute
-      bottom: -8px
+      bottom: -1px
       left: 1rem
       right: 1rem
-      background: $color-theme
+      background: var(--theme-highlight)
       border-radius: 2px
       pointer-events: none
     &:hover
@@ -48,7 +48,7 @@ nav.cap
       color: var(--text-p1)
     &.active
       background: var(--card)
-      box-shadow: $boxshadow-button
+      //box-shadow: $boxshadow-button
     &.active:after
       content: ''
   a+a

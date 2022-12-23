@@ -86,7 +86,7 @@ $(function () {
     var cfg = new Object();
     cfg.el = el;
     cfg.api = api;
-    cfg.avatar = '/cdn/images/avatar.svg';
+    cfg.avatar = '/images/avatar.svg';
     FCircle.layoutDiv(cfg);
   }
 });

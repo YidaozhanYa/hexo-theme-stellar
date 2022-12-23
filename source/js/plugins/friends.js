@@ -78,7 +78,7 @@ $(function () {
     cfg.el = el;
     cfg.api = api;
     cfg.class = el.getAttribute('class');
-    cfg.avatar = '/cdn/images/avatar.svg';
+    cfg.avatar = '/images/avatar.svg';
     friendsjs.layout(cfg);
   }
 });

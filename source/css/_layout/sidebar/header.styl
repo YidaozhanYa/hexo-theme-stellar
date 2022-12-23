@@ -4,7 +4,7 @@
 
 nav.menu
   margin: 1rem 0
-  background: var(--block)
+  //background: var(--block)
   border-radius: 6px
   display: flex
   padding: 1px
@@ -16,6 +16,8 @@ nav.menu
   &::-webkit-scrollbar-thumb
     display: none
   a.nav-item
+    position: relative
+
     text-overflow: ellipsis
     word-break: keep-all
     margin: 1px
@@ -29,7 +31,8 @@ nav.menu
     &.active, &:hover
       color: var(--text-p1)
       background: var(--card)
-      box-shadow: $boxshadow-button
+      //box-shadow: 0 0 0px 0px rgba(0,0,0,0.04), 0 0 4px 0px rgba(0,0,0,0.04)
+
 
 .l_left .menu a.nav-item
   flex-grow: 1

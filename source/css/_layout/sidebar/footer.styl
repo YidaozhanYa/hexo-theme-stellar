@@ -13,19 +13,21 @@
     filter: grayscale(100%)
     overflow: hidden
     background: transparent
-    trans3: box-shadow background transform
+    border: 0px solid var(--block-border);
+    trans3: background transform border
     &:hover
       color: $color-hover
       z-index: 1
       filter: unset
       transform: translateY(-1px)
-      background: linear-gradient(145deg, #ddd, #fff)
-      box-shadow: 2px 4px 8px #ddd, -2px -4px 8px #fff
+      background: var(--card)
+      border: 1px solid var(--block-border);
+      //box-shadow: 2px 4px 8px #ddd, -2px -4px 8px #fff
       if hexo-config('style.darkmode') == 'auto'
         @media (prefers-color-scheme: dark)
-          box-shadow: none
-      if hexo-config('style.darkmode') == 'always'
-        box-shadow: none
+          //box-shadow: none
+      //if hexo-config('style.darkmode') == 'always'
+        //box-shadow: none
 
 .proj-wrap
   display: grid

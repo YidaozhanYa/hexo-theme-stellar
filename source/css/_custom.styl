@@ -1,14 +1,18 @@
 @require('_defines/const')
 
 // 通用主题色
-$color-theme = convert(hexo-config('style.color.common.theme'))
+//$color-theme = convert(hexo-config('style.color.common.theme'))
 $color-accent = convert(hexo-config('style.color.common.accent'))
 $color-link = convert(hexo-config('style.color.common.link'))
 $color-button = convert(hexo-config('style.color.common.button'))
 $color-hover = convert(hexo-config('style.color.common.hover'))
+$fake-mica = #f3f3f3 radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed
 
 // 浅色
-$light-background = convert(hexo-config('style.color.light.background'))
+$light-background = #f3f3f3 radial-gradient(#eff4f9 75%, #f3f3f3 100%) no-repeat fixed
+$light-mix = convert(hexo-config('style.color.light.mix'))
+$light-border = #e1e1e3
+$light-color-theme = #0078d4
 $light-block = convert(hexo-config('style.color.light.block'))
 $light-card = convert(hexo-config('style.color.light.card'))
 $light-title = convert(hexo-config('style.color.light.title'))
@@ -16,7 +20,10 @@ $light-text = convert(hexo-config('style.color.light.text'))
 $light-code = convert(hexo-config('style.color.light.code'))
 
 // 深色
-$dark-background = convert(hexo-config('style.color.dark.background'))
+$dark-background = #202020 radial-gradient(#1a1f35 25%, #202020 100%) no-repeat fixed
+$dark-border = hsla(0deg,0%,100%,.1)
+$dark-color-theme = #4cc2ff
+$dark-mix = convert(hexo-config('style.color.dark.mix'))
 $dark-block = convert(hexo-config('style.color.dark.block'))
 $dark-card = convert(hexo-config('style.color.dark.card'))
 $dark-title = convert(hexo-config('style.color.dark.title'))
@@ -54,7 +61,7 @@ $fs-h6   = $fs-12
 $fs-p    = $fs-15
 $fs-code = $fs-13
 
-$border-card = 12px
+$border-card = 8px
 $border-block = 8px
 $border-image = 6px
 
@@ -83,7 +90,7 @@ $border-image = 6px
 
 
 // shadow
-$boxshadow-card = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-card = 0 2px 3px 0px rgba(0, 0, 0, 0.1)
 $boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
 $boxshadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
 $boxshadow-button = 0 0 2px 0px rgba(0, 0, 0, 0.04), 0 0 8px 0px rgba(0, 0, 0, 0.04)

@@ -1,27 +1,34 @@
+$color-theme = $light-color-theme  //compat
+
 set_text_light()
   --text-p0: $dark-title
-  --text-p1: mix($dark-text, $dark-background, 85)
-  --text-p2: mix($dark-text, $dark-background, 70)
-  --text-p3: mix($dark-text, $dark-background, 45)
-  --text-p4: mix($dark-text, $dark-background, 35)
-  --text-meta: mix($dark-text, $dark-background, 30)
+  --text-p1: mix($dark-text, $dark-mix, 85)
+  --text-p2: mix($dark-text, $dark-mix, 70)
+  --text-p3: mix($dark-text, $dark-mix, 45)
+  --text-p4: mix($dark-text, $dark-mix, 35)
+  --text-meta: mix($dark-text, $dark-mix, 30)
   --text-code: $dark-code
+  --text-revert: $light-title
 set_text_dark()
   --text-p0: $light-title
   --text-p1: $light-text
-  --text-p2: mix($light-text, $light-background, 80)
-  --text-p3: mix($light-text, $light-background, 60)
-  --text-p4: mix($light-text, $light-background, 35)
-  --text-meta: mix($light-text, $light-background, 20)
+  --text-p2: mix($light-text, $light-mix, 80)
+  --text-p3: mix($light-text, $light-mix, 60)
+  --text-p4: mix($light-text, $light-mix, 35)
+  --text-meta: mix($light-text, $light-mix, 20)
   --text-code: $light-code
+  --text-revert: $dark-title
 :root
   --site-bg: $light-background
+  --card-border: $light-border
+  --bottom: $light-bottom
   --card: $light-card
   --block: $light-block
   --block-border: darken($light-block, 5)
   --block-hover: darken($light-block, 2)
   set_text_dark()
-  --theme-highlight: darken($color-theme, 5)
+  --theme-highlight: $light-color-theme
+  --theme-cap: darken($dark-color-theme,10)
   --theme-bg: mix($color-theme, $light-card, 10)
   --theme-link: $color-link
 
@@ -29,11 +36,14 @@ set_darkmode()
   :root
     --site-bg: $dark-background
     --card: $dark-card
+    --card-border: $dark-border
+    --bottom: $dark-bottom
     --block: $dark-block
     --block-border: lighten($dark-block, 6)
     --block-hover: darken($dark-block, 4)
     set_text_light()
-    --theme-highlight: $color-theme
+    --theme-highlight: $dark-color-theme
+    --theme-cap: $dark-color-theme
     --theme-bg: mix($color-theme, $dark-card, 10)
     @media screen and (max-width: $device-mobile-max)
       --site-bg: $dark-background-mobile

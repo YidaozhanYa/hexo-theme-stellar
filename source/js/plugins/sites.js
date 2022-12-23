@@ -81,8 +81,8 @@ $(function () {
     cfg.class = el.getAttribute('class');
     cfg.el = el;
     cfg.api = api;
-    cfg.avatar = '/cdn/images/avatar.svg';
-    cfg.screenshot = '/cdn/images/cover.svg';
+    cfg.avatar = '/images/avatar.svg';
+    cfg.screenshot = '/images/cover.svg';
     sitesjs.layout(cfg);
   }
 });

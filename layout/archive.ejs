@@ -7,6 +7,7 @@ if (page.menu_id == undefined) {
 <% if (page.posts && (is_category() || is_tag())) { %>
   <%- partial('index') %>
 <% } else { %>
+  <% page.menu_id = 'archive'; %>
   <% page.title = __('btn.archives'); %>
   <%- partial('_partial/main/navbar/list_post') %>
   <div class='post-list'>

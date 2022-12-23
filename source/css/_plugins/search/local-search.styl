@@ -5,16 +5,18 @@
     top: 1rem
   .search-input
     width: 100%
-    padding: 0.75rem 1rem
+    padding: 0.5rem 0.5rem
     line-height: 1
     box-sizing: border-box
-    border-radius: $border-block
+    border-radius: 4px
+    border: 1px solid var(--card-border)
     background-color: var(--card)
     color: var(--text-p0)
-    box-shadow: $boxshadow-button
+    //box-shadow: $boxshadow-button
     trans1 box-shadow
     &:hover
-      box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.16), 0 0 8px 0px rgba(0, 0, 0, 0.08)
+      box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.08), 0 0 4px 0px rgba(0, 0, 0, 0.04)
+    border-bottom: 1px solid var(--theme-highlight)
   
   &.noresult 
     .search-input
@@ -77,7 +79,7 @@
 .widget-wrapper
   .search-form
     top: 0
-    background: var(--site-bg)
+    //background: var(--site-bg)
   .search-input
     margin-top: 1rem
     margin-bottom: -1rem

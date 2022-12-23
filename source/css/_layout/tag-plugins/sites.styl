@@ -14,6 +14,16 @@
   .stellar-sites-api
     display: block
 
+.site-card
+  background: white
+  padding: 2px
+  border-radius: 4px
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.2);
+  trans2: box-shadow transform
+  &:hover
+    box-shadow: $boxshadow-float, $boxshadow-card-float
+    transform: translateY(-2px)
+
 .sites-wrap .group-body
   display: grid
   grid-gap: 1rem 1rem
@@ -41,9 +51,10 @@
     @media screen and (max-width: $device-tablet)
       height: 120px
     object-fit: cover
-    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2)
+    //box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2)
   .info
     margin-top: 0.5rem
+    margin-left:0.3rem
     line-height: 1.2
     >img
       width: 28px
@@ -72,12 +83,3 @@
       -webkit-box-orient: vertical
       overflow: hidden
       -webkit-line-clamp: 2
-
-// transform
-.sites-wrap .site-card .card-link
-  >img
-    trans2: box-shadow transform
-  &:hover
-    >img
-      box-shadow: $boxshadow-float, $boxshadow-card-float
-      transform: translateY(-2px)
