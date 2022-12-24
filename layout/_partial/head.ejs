@@ -91,11 +91,11 @@ function og_cover() {
   
   <title><%- generate_title() %></title>
 
-  <% if (theme.open_graph && theme.open_graph.enable) { %>
-    <%- open_graph(og_args()) %>
-  <% } %>
   <% if (page.layout == 'post' && page.cover) { %>
     <%- og_cover() %>
+  <% } %>
+  <% if (theme.open_graph && theme.open_graph.enable) { %>
+    <%- open_graph(og_args()) %>
   <% } %>
   <%- generate_description() %>
 
