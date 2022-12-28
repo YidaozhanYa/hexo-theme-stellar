@@ -29,8 +29,8 @@ set_text_dark()
   set_text_dark()
   --theme-highlight: $light-color-theme
   --theme-cap: darken($light-color-theme,10)
-  --theme-bg: mix($color-theme, $light-card, 10)
-  --theme-link: $color-link
+  --theme-bg: $light-card
+  --theme-link: $light-color-theme
 
 set_darkmode()
   :root
@@ -44,7 +44,7 @@ set_darkmode()
     set_text_light()
     --theme-highlight: $dark-color-theme
     --theme-cap: $dark-color-theme
-    --theme-bg: mix($color-theme, $dark-card, 10)
+    --theme-bg: $dark-card
     @media screen and (max-width: $device-mobile-max)
       --site-bg: $dark-background-mobile
       --card: darken($dark-card, 6)
