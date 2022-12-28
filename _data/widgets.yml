@@ -2,9 +2,15 @@
 # layout即组件布局，支持自定义的有：
 # - markdown: 渲染 md 文本
 #
-search:
+search_blog:
   layout: search
   filter: auto # auto or 'path'
+  placeholder: 文章搜索
+
+search_docs:
+  layout: search
+  filter: /wiki/ # auto or 'path'
+  placeholder: 文档搜索
   
 ghrepo:
   layout: ghrepo

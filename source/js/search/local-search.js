@@ -22,84 +22,59 @@
 // Pieter Robberechts <http://github.com/probberechts>
 
 /*exported searchFunc*/
-var searchFunc = function (path, filter, searchId, contentId) {
-
-  function stripHtml(html) {
-    html = html.replace(/<style([\s\S]*?)<\/style>/gi, "");
-    html = html.replace(/<script([\s\S]*?)<\/script>/gi, "");
-    html = html.replace(/<figure([\s\S]*?)<\/figure>/gi, "");
-    html = html.replace(/<\/div>/ig, "\n");
-    html = html.replace(/<\/li>/ig, "\n");
-    html = html.replace(/<li>/ig, "  *  ");
-    html = html.replace(/<\/ul>/ig, "\n");
-    html = html.replace(/<\/p>/ig, "\n");
-    html = html.replace(/<br\s*[\/]?>/gi, "\n");
-    html = html.replace(/<[^>]+>/ig, "");
-    return html;
-  }
+var searchFunc = function(path, filter, searchId, contentId) {
 
   function getAllCombinations(keywords) {
     var i, j, result = [];
 
     for (i = 0; i < keywords.length; i++) {
-      for (j = i + 1; j < keywords.length + 1; j++) {
-        result.push(keywords.slice(i, j).join(" "));
-      }
+        for (j = i + 1; j < keywords.length + 1; j++) {
+            result.push(keywords.slice(i, j).join(" "));
+        }
     }
     return result;
   }
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', path, true);
-  xhr.responseType = 'arraybuffer';
-  xhr.onload = function (e) {
-    if (this.status == 200) {
-      var received_protobuf = new Uint8Array(this.response);
-      var root = protobuf.Root.fromJSON({ "nested": { "Results": { "fields": { "posts": { "rule": "repeated", "type": "Post", "id": 1 } }, "nested": { "Post": { "fields": { "title": { "rule": "required", "type": "string", "id": 2 }, "url": { "rule": "required", "type": "string", "id": 3 }, "content": { "rule": "required", "type": "string", "id": 4 }, "tags": { "rule": "repeated", "type": "string", "id": 5 }, "categories": { "rule": "repeated", "type": "string", "id": 6 } } } } } } })
-      let Results = root.lookupType('Results');
-      let results = Results.decode(received_protobuf);
-
-      var datas = []
-      for(var item of results.posts) {
-        datas.push({title: item.title, content: item.content, url: item.url})
-      }
-
+  $.ajax({
+    url: path,
+    dataType: "json",
+    success: function(jsonResponse) {
+      var datas = jsonResponse;
       var $input = document.getElementById(searchId);
       if (!$input) { return; }
       var $resultContent = document.getElementById(contentId);
 
-      $input.addEventListener("input", function () {
+      $input.addEventListener("input", function(){
         var resultList = [];
         var keywords = getAllCombinations(this.value.trim().toLowerCase().split(" "))
-          .sort(function (a, b) { return b.split(" ").length - a.split(" ").length; });
+          .sort(function(a,b) { return b.split(" ").length - a.split(" ").length; });
         $resultContent.innerHTML = "";
         if (this.value.trim().length <= 0) {
           return;
         }
         // perform local searching
-        datas.forEach(function (data) {
+        datas.forEach(function(data) {
+          if (!data.title?.trim().length) { return }
+          if (!data.content?.trim().length) { return }
           var matches = 0;
-          if (!data.title || data.title.trim() === "") {
+          if (filter && !data.path.includes(filter)) {
             return;
           }
-          if (filter && !data.url.includes(filter)) {
-            return;
-          }
-          var dataTitle = data.title.trim().toLowerCase();
+          var dataTitle = data.title.trim();
           var dataTitleLowerCase = dataTitle.toLowerCase();
-          var dataContent = stripHtml(data.content.trim());
+          var dataContent = data.content;
           var dataContentLowerCase = dataContent.toLowerCase();
-          var dataUrl = data.url;
+          var dataUrl = data.path;
           var indexTitle = -1;
           var indexContent = -1;
           var firstOccur = -1;
           // only match artiles with not empty contents
           if (dataContent !== "") {
-            keywords.forEach(function (keyword) {
+            keywords.forEach(function(keyword) {
               indexTitle = dataTitleLowerCase.indexOf(keyword);
               indexContent = dataContentLowerCase.indexOf(keyword);
 
-              if (indexTitle >= 0 || indexContent >= 0) {
+              if( indexTitle >= 0 || indexContent >= 0 ){
                 matches += 1;
                 if (indexContent < 0) {
                   indexContent = 0;
@@ -114,21 +89,21 @@ var searchFunc = function (path, filter, searchId, contentId) {
           if (matches > 0) {
             var searchResult = {};
             searchResult.rank = matches;
-            searchResult.str = "<li><a href='" + dataUrl + "'><span class='search-result-title'>" + dataTitle + "</span>";
+            searchResult.str = "<li><a href='"+ dataUrl +"'><span class='search-result-title'>"+ dataTitle +"</span>";
             if (firstOccur >= 0) {
               // cut out 100 characters
               var start = firstOccur - 20;
               var end = firstOccur + 80;
 
-              if (start < 0) {
+              if(start < 0){
                 start = 0;
               }
 
-              if (start == 0) {
+              if(start == 0){
                 end = 100;
               }
 
-              if (end > dataContent.length) {
+              if(end > dataContent.length){
                 end = dataContent.length;
               }
 
@@ -136,21 +111,21 @@ var searchFunc = function (path, filter, searchId, contentId) {
 
               // highlight all keywords
               var regS = new RegExp(keywords.join("|"), "gi");
-              matchContent = matchContent.replace(regS, function (keyword) {
-                return "<span class=\"search-keyword\">" + keyword + "</span>";
+              matchContent = matchContent.replace(regS, function(keyword) {
+                return "<span class=\"search-keyword\">"+keyword+"</span>";
               });
 
-              searchResult.str += "<p class=\"search-result-content\">" + matchContent + "...</p>";
+              searchResult.str += "<p class=\"search-result-content\">" + matchContent +"...</p>";
             }
             searchResult.str += "</a></li>";
             resultList.push(searchResult);
           }
         });
         if (resultList.length) {
-          resultList.sort(function (a, b) {
-            return b.rank - a.rank;
+          resultList.sort(function(a, b) {
+              return b.rank - a.rank;
           });
-          var result = "<ul class=\"search-result-list\">";
+          var result ="<ul class=\"search-result-list\">";
           for (var i = 0; i < resultList.length; i++) {
             result += resultList[i].str;
           }
@@ -159,7 +134,5 @@ var searchFunc = function (path, filter, searchId, contentId) {
         }
       });
     }
-
-  }
-  xhr.send();
+  });
 };

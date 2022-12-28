@@ -13,17 +13,19 @@
     background-color: var(--card)
     color: var(--text-p0)
     //box-shadow: $boxshadow-button
-    trans1 box-shadow
-    &:hover
-      box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.08), 0 0 4px 0px rgba(0, 0, 0, 0.04)
-    border-bottom: 1px solid var(--theme-highlight)
-  
-  &.noresult 
+    transition: transform .3s ease-in-out
+    trans1 border-bottom-color
+    &:focus
+      border-bottom-color: var(--theme-highlight)
+    border-bottom: 2px solid grey
+
+  &.noresult
+    trans1 border-bottom-color
     .search-input
       &:hover
-        box-shadow: 0 0 2px 0px alpha($c-red, 0.2), 0 0 8px 0px alpha($c-red, 0.2)
+        border-bottom-color: darken($c-red,30%)
       &:focus
-        box-shadow: 0 0 2px 0px alpha($c-red, 0.5), 0 0 8px 0px alpha($c-red, 0.4)
+        border-bottom-color: darken($c-red,30%)
 
   .search-no-result
     display: none
@@ -32,7 +34,7 @@
     text-align: center
     font-size: $fs-14
     padding: 2rem
-    background: var(--block)
+    //background: var(--block)
     border-radius: $border-block
 
   #search-result
@@ -48,7 +50,6 @@
     .search-result-title
       background-image: none
       color: var(--text-p1)
-      text-transform: capitalize
       font-weight: bold
       line-height: 1.2
 
