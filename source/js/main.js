@@ -1,4 +1,4 @@
-console.log('\n' + '%c Stellar v' + stellar.version + ' %c\n' + stellar.github + '\n', 'color:#e8fafe;background:#03c7fa;padding:8px;border-radius:4px', 'margin-top:8px');
+console.log('hexo-theme-stellar:\n' + stellar.github);
 // utils
 const util = {
 
@@ -111,12 +111,12 @@ const init = {
           }
         }
         if (topSeg) {
-          $("#data-toc a.toc-link").removeClass("active")
+          $(".toc#toc a.toc-link").removeClass("active")
           var link = "#" + topSeg.attr("id")
           if (link != '#undefined') {
-            $('#data-toc a.toc-link[href="' + encodeURI(link) + '"]').addClass("active")
+            $('.toc#toc a.toc-link[href="' + encodeURI(link) + '"]').addClass("active")
           } else {
-            $('#data-toc a.toc-link:first').addClass("active")
+            $('.toc#toc a.toc-link:first').addClass("active")
           }
         }
       })
@@ -124,7 +124,7 @@ const init = {
   },
   sidebar: () => {
     stellar.jQuery(() => {
-      $("#data-toc a.toc-link").click(function (e) {
+      $(".toc#toc a.toc-link").click(function (e) {
         l_body.classList.remove("sidebar");
       });
     })
