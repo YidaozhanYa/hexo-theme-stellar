@@ -1,4 +1,4 @@
-console.log('hexo-theme-stellar:\n' + stellar.github);
+console.log('\n' + '%c Stellar v' + stellar.version + ' %c\n' + stellar.github + '\n', 'color:#e8fafe;background:#03c7fa;padding:8px;border-radius:4px', 'margin-top:8px');
 // utils
 const util = {
 
@@ -111,12 +111,12 @@ const init = {
           }
         }
         if (topSeg) {
-          $(".toc#toc a.toc-link").removeClass("active")
+          $("#data-toc a.toc-link").removeClass("active")
           var link = "#" + topSeg.attr("id")
           if (link != '#undefined') {
-            $('.toc#toc a.toc-link[href="' + encodeURI(link) + '"]').addClass("active")
+            $('#data-toc a.toc-link[href="' + encodeURI(link) + '"]').addClass("active")
           } else {
-            $('.toc#toc a.toc-link:first').addClass("active")
+            $('#data-toc a.toc-link:first').addClass("active")
           }
         }
       })
@@ -124,7 +124,7 @@ const init = {
   },
   sidebar: () => {
     stellar.jQuery(() => {
-      $(".toc#toc a.toc-link").click(function (e) {
+      $("#data-toc a.toc-link").click(function (e) {
         l_body.classList.remove("sidebar");
       });
     })
@@ -241,10 +241,12 @@ if (stellar.plugins.swiper) {
   if (swiper_api != undefined) {
     stellar.loadCSS(stellar.plugins.swiper.css);
     stellar.loadScript(stellar.plugins.swiper.js, { defer: true }).then(function () {
-      var swiper = new Swiper('.swiper-container', {
+      const effect = swiper_api.getAttribute('effect') || '';
+      var swiper = new Swiper('.swiper#swiper-api', {
         slidesPerView: 'auto',
         spaceBetween: 8,
         centeredSlides: true,
+        effect: effect,
         loop: true,
         pagination: {
           el: '.swiper-pagination',
@@ -305,14 +307,14 @@ if (stellar.plugins.fancybox) {
 if (stellar.search.service) {
   if (stellar.search.service == 'local_search') {
     stellar.jQuery(() => {
-      stellar.loadScript(stellar.search.js, {
-        defer: true,
-      });
       stellar.loadScript('/js/search/local-search.js', { defer: true }).then(function () {
         var $inputArea = $("input#search-input");
+        if ($inputArea.length == 0) {
+          return;
+        }
         var $resultArea = document.querySelector("div#search-result");
         $inputArea.focus(function() {
-          var path = stellar.search.path || '/search.protobuf';
+          var path = stellar.search[stellar.search.service]?.path || '/search.json';
           if (!path.startsWith('/')) {
             path = '/' + path;
           }

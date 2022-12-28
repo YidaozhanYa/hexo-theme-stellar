@@ -255,7 +255,9 @@ tag_plugins:
     max-height: 80vh
   # {% mark %}
   mark:
-    default_color: dark # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+    default_color: dark # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error # {% tag %}
+  tag:
+    default_color: yellow # red, orange, yellow, green, cyan, blue, purple
 
 ######## JS Plugins ########
 plugins:
