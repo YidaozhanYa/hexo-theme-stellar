@@ -3,7 +3,6 @@
 本主题是 xaoxuu/hexo-theme-stellar 的 fork，用于一刀斩的博客。
 
 - 去 jsDelivr 化。
-
 - 样式做了修改，遵循 Fluent Design 设计风格。
 
-- 将自带搜索改为 protobuf。
+自 1.17.2 起，本主题不再跟随 Stellar 主分支跟进版本，转而自己维护。
