@@ -39,7 +39,12 @@ $dark-background-mobile = convert(hexo-config('style.color.dark.background-mobil
   font-family: 'Segoe UI Emoji'
   src: url('/fonts/SegoeUIEmojiFluent.ttf'), local('Segoe UI Emoji')
 
-$ff-body = "HarmonyOS_Regular", "Segoe UI Emoji", "Noto Color Emoji", sans-serif
+@font-face
+  font-family: 'Twemoji Country Flags'
+  src: url('/fonts/TwemojiCountryFlags.woff2'), local('Twemoji Country Flags')
+
+
+$ff-body = "HarmonyOS_Regular", "Twemoji Country Flags", "Segoe UI Emoji", "Noto Color Emoji", sans-serif
 $ff-code = monospace
 
 $ff-logo = $ff-body
