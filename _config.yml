@@ -279,11 +279,8 @@ plugins:
 
   ## optional plugins ##
   # preload
-  preload:
-    enable: true
-    service: flying_pages # instant_page, flying_pages
-    instant_page: https://fastly.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js
-    flying_pages: https://fastly.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
+  instant_click:
+    js: https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js
 
   # image lazyload
   # https://www.npmjs.com/package/vanilla-lazyload

@@ -1,3 +1,7 @@
+<script src="<%- theme.plugins.instant_click.js -%>" data-no-instant></script>
+<script data-no-instant>
+  InstantClick.init();
+</script>
 <script type="text/javascript">
   stellar = {
     // 懒加载 css https://github.com/filamentgroup/loadCSS
@@ -90,7 +94,7 @@
       }
     }
   };
-  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/<%- theme.stellar.version %>';
+  stellar.github = 'https://github.com/YidaozhanYa/hexo-theme-stellar';
   stellar.config = {
     date_suffix: {
       just: '<%- __('meta.date_suffix.just') %>',
@@ -129,22 +133,20 @@
   if ('<%- theme.plugins.scrollreveal.enable %>' == 'true') {
     stellar.plugins.scrollreveal = Object.assign(<%- JSON.stringify(theme.plugins.scrollreveal) %>);
   }
-  if ('<%- theme.plugins.preload.enable %>' == 'true') {
-    stellar.plugins.preload = Object.assign(<%- JSON.stringify(theme.plugins.preload) %>);
-  }
   if ('<%- theme.plugins.fancybox.enable %>' == 'true') {
     stellar.plugins.fancybox = Object.assign(<%- JSON.stringify(theme.plugins.fancybox) %>);
   }
   if ('<%- theme.plugins.heti.enable %>' == 'true') {
     stellar.plugins.heti = Object.assign(<%- JSON.stringify(theme.plugins.heti) %>);
   }
+  stellar.plugins.instant_click = Object.assign(<%- JSON.stringify(theme.plugins.instant_click) %>);
 </script>
 
 <!-- required -->
 <% if (theme.stellar.cdn_js) { %>
-  <%- js({src: theme.stellar.cdn_js, async: true}) %>
+  <%- js({src: theme.stellar.cdn_js, async: true, 'data-no-instant': true}) %>
 <% } else { %>
-  <%- js({src: '/js/main.js', async: true}) %>
+  <%- js({src: '/js/main.js', async: true, 'data-no-instant': true}) %>
 <% } %>
 <%- js({src: '/js/outdate-check.js', async: true}) %>
 <!-- optional -->

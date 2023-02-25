@@ -1,4 +1,4 @@
-<script>
+<script data-no-instant>
   function getEmojiMaps() {
     function emoji(path, idx, ext) {
       return path + "/" + path + "-" + idx + "." + ext;
@@ -34,8 +34,8 @@
       }));
     });
   }
-  window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
+  InstantClick.on('change', () => {
+    console.log(`New page loaded: ${window.location.pathname}`);
     load_comment();
   });
 

@@ -1,4 +1,10 @@
-console.log('hexo-theme-stellar:\n' + stellar.github);
+console.log(
+  `\n %c Hexo theme Stellar %c ${stellar.github} %c \n \n`,
+  "color: #eff4f9; background: #030307; padding: 5px; border-radius: 4px 0 0 4px;",
+  "background: #eff4f9; padding: 5px; border-radius: 0 4px 4px 0;"
+);
+console.log('-- Modified by YidaozhanYa');
+
 // utils
 const util = {
 
@@ -179,7 +185,7 @@ init.registerTabsTag()
 
 // scrollreveal
 if (stellar.plugins.scrollreveal) {
-  stellar.loadScript(stellar.plugins.scrollreveal.js).then(function () {
+  reveal = () => {
     ScrollReveal().reveal("body .reveal", {
       distance: stellar.plugins.scrollreveal.distance,
       duration: stellar.plugins.scrollreveal.duration,
@@ -187,7 +193,13 @@ if (stellar.plugins.scrollreveal) {
       scale: stellar.plugins.scrollreveal.scale,
       easing: "ease-out"
     });
-  })
+  }
+  stellar.loadScript(stellar.plugins.scrollreveal.js).then(() => {
+    reveal();
+  });
+  InstantClick.on('change', () => {
+    reveal();
+  });
 }
 
 // lazyload
@@ -208,7 +220,7 @@ if (stellar.plugins.lazyload) {
     },
     false
   );
-  document.addEventListener('DOMContentLoaded', function () {
+  InstantClick.on('change', () => {
     window.lazyLoadInstance?.update();
   });
 }
@@ -258,25 +270,6 @@ if (stellar.plugins.swiper) {
         },
       });
     })
-  }
-}
-
-// preload
-if (stellar.plugins.preload) {
-  if (stellar.plugins.preload.service == 'instant_page') {
-    stellar.loadScript(stellar.plugins.preload.instant_page, {
-      defer: true,
-      type: 'module',
-      integrity: 'sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1'
-    })
-  } else if (stellar.plugins.preload.service == 'flying_pages') {
-    window.FPConfig = {
-      delay: 0,
-      ignoreKeywords: [],
-      maxRPS: 5,
-      hoverDelay: 25
-    };
-    stellar.loadScript(stellar.plugins.preload.flying_pages, { defer: true })
   }
 }
 
