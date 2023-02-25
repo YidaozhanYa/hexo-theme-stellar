@@ -59,11 +59,11 @@ p>code:not([class]),li>code:not([class])
     pointer-events: none
     disable-select()
     text-align: right
-    padding: 0 1em
+    padding: 0 0.5rem 0 1rem
     border-width: 0
     margin-left: 0
-    // position: sticky // 如果希望行标固定请打开此行；但是如果想在较窄屏幕上拥有较好的阅读体验，建议让行标跟随滚动。
-    // background: var(--block) // 如果希望行标固定请打开此行；但是如果想在较窄屏幕上拥有较好的阅读体验，建议让行标跟随滚动。
+    position: sticky // 如果希望行标固定请打开此行；但是如果想在较窄屏幕上拥有较好的阅读体验，建议让行标跟随滚动。
+    background: var(--card) // 如果希望行标固定请打开此行；但是如果想在较窄屏幕上拥有较好的阅读体验，建议让行标跟随滚动。
     left: 0
     z-index: 1
     pre .line
@@ -71,7 +71,7 @@ p>code:not([class]),li>code:not([class])
   .code
     pre
       display: block
-      padding: .5em 1rem
+      padding: 0
   .gutter+.code pre
     padding-left: 0.25em
 
@@ -101,12 +101,14 @@ table:not([class])
     color: var(--text-p3)
   >.hljs
     padding: 1rem
-    border-radius: $border-block
-    border: 1px solid var(--block-border)
     line-height: 1.5
     box-sizing: border-box
 
 .md-text .highlight
+  border-radius: $border-block
+  border: 1px solid var(--card-border)
+  background-color: var(--card)
+  margin: 1rem 0.3rem
   .code
     vertical-align: top
     &:before
@@ -116,7 +118,8 @@ table:not([class])
       padding: 4px 0.5rem
       opacity: .25
       font-weight: 700
-      color: var(--theme)
+      color: var(--text-p3)
+      filter: drop-shadow(1px 1px 0.5px var(--text-p4))
 
   &.yaml .code:before
     content: "YAML"
