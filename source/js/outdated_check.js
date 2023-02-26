@@ -1,6 +1,6 @@
-function judgeOutdated() {
-  var postDate = new Date(document.getElementById("post-meta").firstElementChild.dateTime);
-  var nowDate = new Date();
+const judgeOutdated = () => {
+  const postDate = new Date(document.getElementById("post-meta").firstElementChild.dateTime);
+  const nowDate = new Date();
   //判断这两个日期是否相差三个月以上
   if (nowDate.getFullYear() - postDate.getFullYear() > 0) {
     return true;
@@ -9,7 +9,7 @@ function judgeOutdated() {
   } else {
     return false;
   }
-}
+};
 
 
 document.addEventListener('DOMContentLoaded', function () {
